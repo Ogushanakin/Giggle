@@ -7,10 +7,12 @@
 
 import UIKit
 
+
 class GiggleTableViewCell: UITableViewCell {
 
     static let identifier = "GiggleTableViewCell"
     
+    private let actionSpacing: CGFloat = 60
     private let avatarImageView: UIImageView = {
        
         let imageView = UIImageView()
@@ -51,12 +53,48 @@ class GiggleTableViewCell: UITableViewCell {
         return label
     }()
     
+    private let replyButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "bubble.left"), for: .normal)
+        button.tintColor = .systemGray2
+        return button
+    }()
+    
+    private let regiggleButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "arrow.2.squarepath"), for: .normal)
+        button.tintColor = .systemGray2
+        return button
+    }()
+    
+    private let likeButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.tintColor = .systemGray2
+        return button
+    }()
+    
+    private let shareButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
+        button.tintColor = .systemGray2
+        return button
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.addSubview(avatarImageView)
         contentView.addSubview(displayName)
         contentView.addSubview(usernameLabel)
         contentView.addSubview(giggleTextContentLabel)
+        contentView.addSubview(replyButton)
+        contentView.addSubview(regiggleButton)
+        contentView.addSubview(likeButton)
+        contentView.addSubview(shareButton)
         configureConstraints()
     }
     
@@ -83,13 +121,38 @@ class GiggleTableViewCell: UITableViewCell {
             giggleTextContentLabel.leadingAnchor.constraint(equalTo: displayName.leadingAnchor),
             giggleTextContentLabel.topAnchor.constraint(equalTo: displayName.bottomAnchor, constant: 10),
             giggleTextContentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-            giggleTextContentLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
+        ]
+        
+        let replyButtonConstraints = [
+            replyButton.leadingAnchor.constraint(equalTo: giggleTextContentLabel.leadingAnchor),
+            replyButton.topAnchor.constraint(equalTo: giggleTextContentLabel.bottomAnchor, constant: 10),
+            replyButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
+        ]
+        
+        let regiggleButtonConstraints = [
+            regiggleButton.leadingAnchor.constraint(equalTo: replyButton.trailingAnchor, constant: actionSpacing),
+            regiggleButton.centerYAnchor.constraint(equalTo: replyButton.centerYAnchor),
+            
+        ]
+        
+        let likeButtonConstraints = [
+            likeButton.leadingAnchor.constraint(equalTo: regiggleButton.trailingAnchor, constant: actionSpacing),
+            likeButton.centerYAnchor.constraint(equalTo: replyButton.centerYAnchor)
+        ]
+        
+        let shareButtonConstraints = [
+            shareButton.leadingAnchor.constraint(equalTo: likeButton.trailingAnchor, constant: actionSpacing),
+            shareButton.centerYAnchor.constraint(equalTo: replyButton.centerYAnchor)
         ]
         
         NSLayoutConstraint.activate(avatarImageViewConstraints)
         NSLayoutConstraint.activate(displayNameLabelConstraints)
         NSLayoutConstraint.activate(usernameLabelConstraints)
         NSLayoutConstraint.activate(giggleTextContentLabelConstraints)
+        NSLayoutConstraint.activate(replyButtonConstraints)
+        NSLayoutConstraint.activate(regiggleButtonConstraints)
+        NSLayoutConstraint.activate(likeButtonConstraints)
+        NSLayoutConstraint.activate(shareButtonConstraints)
     }
     
     required init?(coder: NSCoder) {
