@@ -9,6 +9,24 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    private func configureNavigationBar() {
+        let size:CGFloat = 60
+        let logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        logoImageView.contentMode = .scaleAspectFill
+        logoImageView.image = UIImage(named: "appicon")
+        
+        let middleView = UIView(frame: CGRect(x: 0, y: 0, width: size, height: size))
+        middleView.addSubview(logoImageView)
+        navigationItem.titleView = middleView
+        
+        let profileImage = UIImage(systemName: "person")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: profileImage, style: .plain, target: self, action: #selector(didTapProfile))
+    }
+    
+    @objc private func didTapProfile() {
+        print("pressed profile")
+    }
+    
     private let timelineTableView:UITableView = {
         let tableView = UITableView()
         tableView.register(GiggleTableViewCell.self,
@@ -22,7 +40,7 @@ class HomeViewController: UIViewController {
         
         timelineTableView.delegate = self
         timelineTableView.dataSource = self
-        
+        configureNavigationBar()
     }
     
     override func viewDidLayoutSubviews() {
