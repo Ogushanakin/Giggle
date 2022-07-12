@@ -7,10 +7,18 @@
 
 import UIKit
 
+protocol GiggleTableViewCellDelegate: AnyObject {
+    func giggleTableViewCellTapReply()
+    func giggleTableViewCellTapRegiggle()
+    func giggleTableViewCellTapLike()
+    func giggleTableViewCellTapShare()
+}
 
 class GiggleTableViewCell: UITableViewCell {
 
     static let identifier = "GiggleTableViewCell"
+    
+    weak var delegate: GiggleTableViewCellDelegate?
     
     private let actionSpacing: CGFloat = 60
     private let avatarImageView: UIImageView = {
@@ -96,6 +104,30 @@ class GiggleTableViewCell: UITableViewCell {
         contentView.addSubview(likeButton)
         contentView.addSubview(shareButton)
         configureConstraints()
+        configureButtons()
+    }
+    
+    @objc private func didTapReply() {
+        delegate?.giggleTableViewCellTapReply()
+    }
+    
+    @objc private func didTapRegiggle() {
+        delegate?.giggleTableViewCellTapRegiggle()
+    }
+    
+    @objc private func didTapLike() {
+        delegate?.giggleTableViewCellTapLike()
+    }
+    
+    @objc private func didTapShare() {
+        delegate?.giggleTableViewCellTapShare()
+    }
+    
+    private func configureButtons() {
+        replyButton.addTarget(self, action: #selector(didTapReply), for: .touchUpInside)
+        regiggleButton.addTarget(self, action: #selector(didTapRegiggle), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(didTapLike), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(didTapShare), for: .touchUpInside)
     }
     
     private func configureConstraints() {

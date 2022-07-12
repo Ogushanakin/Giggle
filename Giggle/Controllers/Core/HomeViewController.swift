@@ -42,6 +42,25 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.delegate = self
         return cell
+    }
+}
+
+extension HomeViewController: GiggleTableViewCellDelegate {
+    func giggleTableViewCellTapReply() {
+        print("Reply")
+    }
+    
+    func giggleTableViewCellTapRegiggle() {
+        print("Regiggle")
+    }
+    
+    func giggleTableViewCellTapLike() {
+        print("Like")
+    }
+    
+    func giggleTableViewCellTapShare() {
+        print("Share")
     }
 }
