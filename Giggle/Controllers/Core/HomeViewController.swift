@@ -24,7 +24,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func didTapProfile() {
-        print("pressed profile")
+        let vc = ProfileViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     private let timelineTableView:UITableView = {

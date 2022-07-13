@@ -16,6 +16,7 @@
 		7144BE39287AB7BE0023A89D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7144BE38287AB7BE0023A89D /* SearchViewController.swift */; };
 		7144BE3B287AB7D90023A89D /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7144BE3A287AB7D90023A89D /* NotificationsViewController.swift */; };
 		7144BE3D287AB7F90023A89D /* DirectMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7144BE3C287AB7F90023A89D /* DirectMessagesViewController.swift */; };
+		71BFE04D287DF8DA00D76205 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71BFE04C287DF8DA00D76205 /* ProfileViewController.swift */; };
 		71E01C58287AD79600650520 /* GiggleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E01C57287AD79600650520 /* GiggleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +32,7 @@
 		7144BE38287AB7BE0023A89D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		7144BE3A287AB7D90023A89D /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		7144BE3C287AB7F90023A89D /* DirectMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectMessagesViewController.swift; sourceTree = "<group>"; };
+		71BFE04C287DF8DA00D76205 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		71E01C57287AD79600650520 /* GiggleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiggleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 		7144BE34287AB7780023A89D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71BFE04B287DF8B500D76205 /* General */,
 				7144BE35287AB7800023A89D /* Core */,
 			);
 			path = Controllers;
@@ -93,6 +96,14 @@
 				7144BE3C287AB7F90023A89D /* DirectMessagesViewController.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		71BFE04B287DF8B500D76205 /* General */ = {
+			isa = PBXGroup;
+			children = (
+				71BFE04C287DF8DA00D76205 /* ProfileViewController.swift */,
+			);
+			path = General;
 			sourceTree = "<group>";
 		};
 		71E01C56287AD76600650520 /* Views */ = {
@@ -179,6 +190,7 @@
 				7144BE3B287AB7D90023A89D /* NotificationsViewController.swift in Sources */,
 				7144BE23287AB5C90023A89D /* SceneDelegate.swift in Sources */,
 				7144BE37287AB7A70023A89D /* HomeViewController.swift in Sources */,
+				71BFE04D287DF8DA00D76205 /* ProfileViewController.swift in Sources */,
 				71E01C58287AD79600650520 /* GiggleTableViewCell.swift in Sources */,
 				7144BE3D287AB7F90023A89D /* DirectMessagesViewController.swift in Sources */,
 			);
