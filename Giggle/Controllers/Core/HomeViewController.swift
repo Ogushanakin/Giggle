@@ -10,7 +10,7 @@ import UIKit
 class HomeViewController: UIViewController {
 
     private func configureNavigationBar() {
-        let size:CGFloat = 60
+        let size:CGFloat = 40
         let logoImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: size, height: size))
         logoImageView.contentMode = .scaleAspectFill
         logoImageView.image = UIImage(named: "appicon")
