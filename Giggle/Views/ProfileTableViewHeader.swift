@@ -9,6 +9,49 @@ import UIKit
 
 class ProfileTableViewHeader: UIView {
     
+    private let joinedDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Joined July 2022"
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 14, weight: .regular)
+        return label
+    }()
+    
+    private let joinDateImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(systemName: "calendar", withConfiguration: UIImage.SymbolConfiguration(pointSize: 14))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
+    private let userBioLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 3
+        label.textColor = .label
+        label.text = "iOS Developer"
+        return label
+    }()
+    
+    private let usernameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "@ogushanakin"
+        label.textColor = .secondaryLabel
+        label.font = .systemFont(ofSize: 18, weight: .regular)
+        return label
+    }()
+    
+    private let displayNameLabel: UILabel = {
+        
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Ogushan"
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        return label
+    }()
+    
     private let profileAvatarImageView: UIImageView = {
         
         let imageView = UIImageView()
@@ -33,9 +76,13 @@ class ProfileTableViewHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = .red
         addSubview(profileHeaderImageView)
         addSubview(profileAvatarImageView)
+        addSubview(displayNameLabel)
+        addSubview(usernameLabel)
+        addSubview(userBioLabel)
+        addSubview(joinDateImageView)
+        addSubview(joinedDateLabel)
         configureConstraints()
     }
     
@@ -59,7 +106,38 @@ class ProfileTableViewHeader: UIView {
             profileAvatarImageView.heightAnchor.constraint(equalToConstant: 80)
         ]
         
+        let displayNameLabelConstraints = [
+            displayNameLabel.leadingAnchor.constraint(equalTo: profileAvatarImageView.leadingAnchor),
+            displayNameLabel.topAnchor.constraint(equalTo: profileAvatarImageView.bottomAnchor, constant: 20)
+        ]
+        
+        let usernameLabelConstraints = [
+            usernameLabel.leadingAnchor.constraint(equalTo: displayNameLabel.leadingAnchor),
+            usernameLabel.topAnchor.constraint(equalTo: displayNameLabel.bottomAnchor, constant: 5)
+        ]
+        
+        let userBioLabelConstraints = [
+            userBioLabel.leadingAnchor.constraint(equalTo: displayNameLabel.leadingAnchor),
+            userBioLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -5),
+            userBioLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 5)
+        ]
+        
+        let joinDateImageViewConstraints = [
+            joinDateImageView.leadingAnchor.constraint(equalTo: displayNameLabel.leadingAnchor),
+            joinDateImageView.topAnchor.constraint(equalTo: userBioLabel.bottomAnchor, constant: 5)
+        ]
+        
+        let joinedDateLabelConstraints = [
+            joinedDateLabel.leadingAnchor.constraint(equalTo: joinDateImageView.trailingAnchor, constant: 2),
+            joinedDateLabel.bottomAnchor.constraint(equalTo: joinDateImageView.bottomAnchor)
+        ]
+        
         NSLayoutConstraint.activate(profileHeaderImageViewConstraints)
         NSLayoutConstraint.activate(profileAvatarImageViewConstraints)
+        NSLayoutConstraint.activate(displayNameLabelConstraints)
+        NSLayoutConstraint.activate(usernameLabelConstraints)
+        NSLayoutConstraint.activate(userBioLabelConstraints)
+        NSLayoutConstraint.activate(joinDateImageViewConstraints)
+        NSLayoutConstraint.activate(joinedDateLabelConstraints)
     }
 }
